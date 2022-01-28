@@ -1,6 +1,8 @@
 import React, { type HTMLProps } from 'react'
-import View from '@components/Common/View'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
+
+import View from '@components/Common/View'
+import Label from '@components/Form/Label'
 
 export type TextInputProps = HTMLProps<HTMLLabelElement> & {
   label?: string
@@ -24,15 +26,15 @@ const TextInput = ({
   return (
     <View className="">
       {label && (
-        <label
+        <Label
           htmlFor={name}
           className="block mb-2 text-sm font-semibold text-light-slate"
         >
           {label}
-        </label>
+        </Label>
       )}
       <input
-        className="rounded-md border border-solid border-light-gray bg-transparent px-[18px] py-2 text-xl leading-8 text-secondary focus:border-light-blue focus:outline-none"
+        className="rounded-md border border-solid border-light-gray bg-transparent px-[18px] py-2 text-xl leading-8 text-secondary transition ease-in-out focus:border-light-blue focus:outline-none"
         type={type}
         defaultValue={defaultValue}
         {...register(name, validation)}
