@@ -29,6 +29,10 @@ module.exports = {
         checkbox:
           '0px 1.24302px 1.24302px rgba(0, 0, 0, 0.1), 0px 0px 0px 1.24302px #5E5ADB, 0px 0px 0px 4.97206px rgba(94, 90, 219, 0.4)',
       },
+      gridTemplateColumns: {
+        'form-name': '1fr 60px 1fr minmax(120px, auto)',
+        'form-address': '1fr 110px 1fr',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],
