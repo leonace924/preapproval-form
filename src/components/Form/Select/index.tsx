@@ -1,6 +1,9 @@
 import React, { type HTMLProps } from 'react'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
+
 import Label from '@components/Form/Label'
 import View from '@components/Common/View'
+import Paragraph from '@components/Common/Paragraph'
 
 export type OptionProps = {
   name: string
@@ -10,6 +13,10 @@ export type OptionProps = {
 type SelectProps = HTMLProps<HTMLSelectElement> & {
   options: OptionProps[]
   label: string
+  errors?: any
+  name: string
+  register: UseFormRegister<FieldValues>
+  validation?: any
 }
 
 const Select = ({
@@ -17,8 +24,14 @@ const Select = ({
   name,
   options = [],
   className,
+  errors,
+  register,
+  validation,
   ...props
 }: SelectProps) => {
+  const hasError = errors && !!errors?.errors?.[name]
+  console.log(errors)
+
   return (
     <View>
       {label && (
@@ -26,13 +39,18 @@ const Select = ({
           {label}
         </Label>
       )}
-      <select {...props}>
+      <select {...props} {...register(name, validation)}>
         {options.map(({ name, value }) => (
           <option key={value} value={value}>
             {name}
           </option>
         ))}
       </select>
+      {hasError && (
+        <Paragraph className="pt-1 text-xs text-rose-400">
+          {errors.errors[name].message}
+        </Paragraph>
+      )}
     </View>
   )
 }

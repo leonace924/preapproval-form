@@ -3,6 +3,7 @@ import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 import View from '@components/Common/View'
 import Label from '@components/Form/Label'
+import Paragraph from '@components/Common/Paragraph'
 
 export type TextInputProps = HTMLProps<HTMLLabelElement> & {
   label?: string
@@ -36,6 +37,11 @@ const TextInput = ({
         defaultValue={defaultValue}
         {...register(name, validation)}
       />
+      {hasError && (
+        <Paragraph className="pt-1 text-sm text-rose-400">
+          {errors.errors[name].message}
+        </Paragraph>
+      )}
     </View>
   )
 }
