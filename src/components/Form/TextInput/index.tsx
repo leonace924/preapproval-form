@@ -24,17 +24,13 @@ const TextInput = ({
   // const hasError = errors && !!errors.errors[name]
 
   return (
-    <View className="">
+    <View>
       {label && (
-        <Label
-          htmlFor={name}
-          className="block mb-2 text-sm font-semibold text-light-slate"
-        >
+        <Label htmlFor={name} className="mb-2">
           {label}
         </Label>
       )}
       <input
-        className="rounded-md border border-solid border-light-gray bg-transparent px-[18px] py-2 text-xl leading-8 text-secondary transition ease-in-out focus:border-light-blue focus:outline-none"
         type={type}
         defaultValue={defaultValue}
         {...register(name, validation)}
