@@ -1,0 +1,26 @@
+.d-approve-form {
+  @apply bg-primary px-6 pt-[50px];
+
+  input,
+  select {
+    @apply w-full;
+  }
+  form {
+    @apply grid gap-6;
+  }
+
+  &__name {
+    @apply grid gap-6;
+  }
+
+  &__basic {
+    @apply grid gap-6;
+  }
+
+  &__street {
+  }
+
+  &__address {
+    @apply grid gap-6;
+  }
+}

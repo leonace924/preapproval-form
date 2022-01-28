@@ -1,6 +1,10 @@
+@import './components/_forms.css';
+
+@import './components/Pages/_ApproveForm.css';
+
 html,
 body {
-  @apply font-inter;
+  @apply w-full h-full font-inter;
 }
 
 input {
