@@ -15,7 +15,7 @@ const Layout = ({ children, title = 'Drivly Approve Form' }: LayoutProps) => {
         <meta name="Description" content="Great State Burger Site" />
       </Head>
 
-      <main>{children}</main>
+      <main className="flex flex-col flex-1 h-full">{children}</main>
 
       <footer></footer>
     </>
