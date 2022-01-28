@@ -19,7 +19,7 @@ const TextInput = ({
   validation,
   errors,
   defaultValue,
-  type,
+  type = 'text',
 }: TextInputProps) => {
   // const hasError = errors && !!errors.errors[name]
 
@@ -32,6 +32,7 @@ const TextInput = ({
       )}
       <input
         type={type}
+        aria-describedby={name}
         defaultValue={defaultValue}
         {...register(name, validation)}
       />

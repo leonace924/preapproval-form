@@ -6,7 +6,9 @@ button {
   @apply font-inter;
 }
 
-input {
+input[type='text'],
+input[type='email'],
+input[type='tel'] {
   @apply rounded-md border border-solid border-light-gray bg-transparent px-[18px] py-2 text-xl leading-8 text-secondary transition ease-in-out focus:border-light-blue focus:outline-none;
 }
 
