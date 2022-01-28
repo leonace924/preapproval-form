@@ -1,26 +1,49 @@
-import React from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import React, { useEffect } from 'react'
+import { gql, useMutation } from '@apollo/client'
+import { FieldValues, useForm } from 'react-hook-form'
 
 import View from '@components/Common/View'
 import Select from '@components/Form/Select'
 import TextInput from '@components/Form/TextInput'
-
-import { suffixOptions, stateOptions } from '@data/constants'
 import Button from '@components/Form/Button'
 import Paragraph from '@components/Common/Paragraph'
 import Checkbox from '@components/Form/Checkbox'
 
+import { suffixOptions, stateOptions } from '@data/constants'
+import { PRE_APPROVAL } from '@lib/queries'
+
+type ApproveDataProps = {
+  firstName: String
+  middleInitial: String
+  lastName: String
+  suffix: String
+  email: String
+  phone: String
+  address: String
+  city: String
+  state: String
+  zip: String
+  authorized: Boolean
+}
+
 const ApproveForm = () => {
+  const [prevApproval, { data, loading, error }] = useMutation(PRE_APPROVAL)
+
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data: any) => {
-    console.log(errors)
+  const onSubmit = (data: FieldValues) => {
+    prevApproval({ variables: { input: data } })
   }
+
+  useEffect(() => {
+    if (data?.addPreApproval?.numUids > 0) {
+      alert('success')
+    }
+  }, [data])
 
   return (
     <View className="d-approve-form lg:w-1/2">
@@ -37,7 +60,7 @@ const ApproveForm = () => {
             label="MI"
             register={register}
             errors={{ errors }}
-            name="middle"
+            name="middleInitial"
           />
           <TextInput
             label="Last name*"
@@ -58,6 +81,7 @@ const ApproveForm = () => {
           <TextInput
             label="Email*"
             type="email"
+            name="email"
             register={register}
             errors={{ errors }}
             validation={{
@@ -67,7 +91,6 @@ const ApproveForm = () => {
                 message: 'Email is not correct',
               },
             }}
-            name="email"
           />
           <TextInput
             label="Phone Number*"
@@ -84,7 +107,7 @@ const ApproveForm = () => {
             register={register}
             errors={{ errors }}
             validation={{ required: 'This is required' }}
-            name="streetAddr"
+            name="address"
           />
         </View>
 
@@ -109,7 +132,7 @@ const ApproveForm = () => {
             register={register}
             errors={{ errors }}
             validation={{ required: 'This is required' }}
-            name="zipCode"
+            name="zip"
           />
         </View>
 
@@ -125,8 +148,8 @@ const ApproveForm = () => {
 
           <View className="d-approve-form__confirm-action">
             <Checkbox
-              id="agree"
-              name="agree"
+              id="authorized"
+              name="authorized"
               label="I Agree*"
               register={register}
               errors={{ errors }}
