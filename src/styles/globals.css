@@ -1,0 +1,11 @@
+html {
+  @apply h-full font-inter;
+}
+body,
+#__next {
+  @apply flex flex-col min-h-screen font-inter;
+}
+
+input {
+  @apply font-roboto;
+}

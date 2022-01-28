@@ -1,0 +1,29 @@
+input,
+select {
+  @apply font-roboto;
+}
+button {
+  @apply font-inter;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'] {
+  @apply rounded-md border border-solid border-light-gray bg-transparent px-[18px] py-2 text-xl leading-8 text-secondary transition ease-in-out focus:border-light-blue focus:outline-none;
+}
+
+select {
+  @apply m-0 block appearance-none rounded-md border border-solid border-light-gray bg-transparent bg-no-repeat px-[18px] py-2 text-xl font-normal leading-8 text-secondary transition ease-in-out focus:border-light-blue focus:outline-none;
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-position-x: calc(100% - 8px);
+  background-position-y: 13px;
+
+  option {
+    @apply bg-secondary text-primary;
+  }
+}
+
+button {
+  @apply rounded-md bg-secondary px-1.5 py-3 text-sm font-medium tracking-wide	text-primary shadow-button transition ease-in-out hover:bg-opacity-80;
+}
