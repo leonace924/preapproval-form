@@ -21,7 +21,7 @@ const TextInput = ({
   defaultValue,
   type = 'text',
 }: TextInputProps) => {
-  // const hasError = errors && !!errors.errors[name]
+  const hasError = errors && !!errors.errors[name]
 
   return (
     <View>
