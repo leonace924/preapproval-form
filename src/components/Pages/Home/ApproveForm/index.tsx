@@ -23,14 +23,14 @@ const ApproveForm = () => {
   }
 
   return (
-    <View className="d-approve-form">
+    <View className="d-approve-form lg:w-1/2">
       <form onSubmit={handleSubmit(onSubmit)}>
         <View className="d-approve-form__name">
           <TextInput
             label="First name*"
             register={register}
             errors={{ errors }}
-            validation={{ required: true }}
+            validation={{ required: 'This is required' }}
             name="firstName"
           />
           <TextInput
@@ -43,10 +43,15 @@ const ApproveForm = () => {
             label="Last name*"
             register={register}
             errors={{ errors }}
-            validation={{ required: true }}
+            validation={{ required: 'This is required' }}
             name="lastName"
           />
-          <Select label="Suffix" options={suffixOptions} name="suffix" />
+          <Select
+            register={register}
+            label="Suffix"
+            options={suffixOptions}
+            name="suffix"
+          />
         </View>
 
         <View className="d-approve-form__basic">
@@ -56,8 +61,11 @@ const ApproveForm = () => {
             register={register}
             errors={{ errors }}
             validation={{
-              required: true,
-              pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+              required: 'This is required',
+              pattern: {
+                value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                message: 'Email is not correct',
+              },
             }}
             name="email"
           />
@@ -65,7 +73,7 @@ const ApproveForm = () => {
             label="Phone Number*"
             register={register}
             errors={{ errors }}
-            validation={{ required: true }}
+            validation={{ required: 'This is required' }}
             name="phone"
           />
         </View>
@@ -75,7 +83,7 @@ const ApproveForm = () => {
             label="Street address*"
             register={register}
             errors={{ errors }}
-            validation={{ required: true }}
+            validation={{ required: 'This is required' }}
             name="streetAddr"
           />
         </View>
@@ -85,21 +93,28 @@ const ApproveForm = () => {
             label="City*"
             register={register}
             errors={{ errors }}
-            validation={{ required: true }}
+            validation={{ required: 'This is required' }}
             name="city"
           />
-          <Select label="State*" options={stateOptions} name="state" />
+          <Select
+            name="state"
+            errors={errors}
+            register={register}
+            validation={{ required: 'This is required' }}
+            label="State*"
+            options={stateOptions}
+          />
           <TextInput
             label="Zip / Postal*"
             register={register}
             errors={{ errors }}
-            validation={{ required: true }}
+            validation={{ required: 'This is required' }}
             name="zipCode"
           />
         </View>
 
         <View className="d-approve-form__confirm">
-          <Paragraph className="my-10 text-sm text-light-slate">
+          <Paragraph className="my-10 text-sm text-light-slate lg:my-12">
             By clicking the I Agree checkbox and Submit, I consent to have my
             credit file accessed for purposes of prequalifying for a vehicle
             loan. This is a soft inquiry and will not impact my credit score. I
@@ -108,9 +123,17 @@ const ApproveForm = () => {
             prequalify depending on the prequalification criteria.
           </Paragraph>
 
-          <Checkbox id="agree" name="agree" label="I Agree*" />
-
-          <Button className="w-full mt-14">Submit</Button>
+          <View className="d-approve-form__confirm-action">
+            <Checkbox
+              id="agree"
+              name="agree"
+              label="I Agree*"
+              register={register}
+              errors={{ errors }}
+              validation={{ required: true }}
+            />
+            <Button>Submit</Button>
+          </View>
         </View>
       </form>
     </View>

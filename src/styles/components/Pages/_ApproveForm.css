@@ -6,21 +6,30 @@
     @apply w-full;
   }
   form {
-    @apply grid gap-6;
+    @apply grid gap-6 lg:gap-9;
   }
 
   &__name {
-    @apply grid gap-6;
+    @apply grid gap-6 lg:grid-cols-form-name lg:gap-4;
   }
 
   &__basic {
-    @apply grid gap-6;
+    @apply grid gap-6 lg:grid-cols-2 lg:gap-4;
   }
 
   &__street {
   }
 
   &__address {
-    @apply grid gap-6;
+    @apply grid gap-6 lg:grid-cols-form-address lg:gap-4;
+  }
+
+  &__confirm {
+    &-action {
+      @apply lg:flex lg:items-center lg:justify-between;
+      button {
+        @apply w-full mt-14 lg:m-0 lg:w-32;
+      }
+    }
   }
 }
