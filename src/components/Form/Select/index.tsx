@@ -30,7 +30,6 @@ const Select = ({
   ...props
 }: SelectProps) => {
   const hasError = errors && !!errors?.errors?.[name]
-  console.log(errors)
 
   return (
     <View>

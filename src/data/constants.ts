@@ -2,6 +2,10 @@ import { OptionProps } from '@components/Form/Select'
 
 export const suffixOptions: OptionProps[] = [
   {
+    value: '',
+    name: '',
+  },
+  {
     value: 'sr',
     name: 'Sr.',
   },
