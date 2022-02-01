@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { gql, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { FieldValues, useForm } from 'react-hook-form'
 
 import View from '@components/Common/View'
@@ -46,8 +46,11 @@ const ApproveForm = () => {
   }, [data])
 
   return (
-    <View className="d-approve-form lg:w-1/2">
+    <View className="d-approve-form">
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h2 className="hidden font-bold text-white lg:block lg:text-2xl">
+          Get Pre-approved
+        </h2>
         <View className="d-approve-form__name">
           <TextInput
             label="First name*"
