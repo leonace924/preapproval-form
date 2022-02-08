@@ -19,7 +19,7 @@ const Product = () => {
             />
           </View>
 
-          <View className="flex items-center border-l border-solid border-light-slate">
+          <View className="flex items-center border-l border-transparent border-solid border-l-light-slate">
             <p className="ml-8 text-sm text-light-slate">Terms</p>
             <p className="ml-8 text-sm text-light-slate">Privacy</p>
           </View>
