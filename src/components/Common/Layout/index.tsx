@@ -12,7 +12,7 @@ const Layout = ({ children, title = 'Drivly Approve Form' }: LayoutProps) => {
       <Head>
         <title>{title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="Description" content="Great State Burger Site" />
+        <meta name="Description" content="Driver Approval Setup Form" />
       </Head>
 
       <main className="flex flex-col flex-1 h-full">{children}</main>
